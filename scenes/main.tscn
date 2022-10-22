@@ -22,9 +22,9 @@ position = Vector2( 430, 277 )
 
 [node name="algue" parent="algues" instance=ExtResource( 3 )]
 position = Vector2( 164, 522 )
-frame = 3
+frame = 0
 offset = Vector2( 102, -88 )
 
 [node name="algue2" parent="algues" instance=ExtResource( 3 )]
 position = Vector2( 94, 426 )
-frame = 0
+frame = 1
