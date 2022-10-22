@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
+func _flip(mode):
+	$AnimatedSprite.set_flip_h(mode)
 
-
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
