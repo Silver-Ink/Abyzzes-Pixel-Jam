@@ -1,11 +1,50 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://images/poisson_bleu.png" type="Texture" id=1]
 [ext_resource path="res://scripts/fish.gd" type="Script" id=2]
+[ext_resource path="res://images/poisson_rouge.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
 height = 0.0
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1000, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 500, 0, 500, 500 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "bleu",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "rouge",
+"speed": 4.0
+} ]
 
 [node name="fish" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -13,6 +52,8 @@ script = ExtResource( 2 )
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Icon" type="Sprite" parent="."]
-scale = Vector2( 0.515625, 0.515625 )
-texture = ExtResource( 1 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 7 )
+animation = "rouge"
+frame = 1
+playing = true
