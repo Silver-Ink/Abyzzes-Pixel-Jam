@@ -1,5 +1,5 @@
 extends KinematicBody2D
-<<<<<<< HEAD
+
 
 
 var speed = 250
@@ -17,7 +17,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_collide(velocity * delta)
-=======
+
 signal hit
 
 export var speed = 400 # How fast the player will move (pixels/sec).
@@ -63,5 +63,5 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
->>>>>>> daebaa7e992ca32d4383ed2022825ceb7086aaf0
+
 
