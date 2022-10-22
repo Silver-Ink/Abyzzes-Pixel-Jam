@@ -16,8 +16,9 @@ func _physics_process(delta):
 		velocity.x = 0
 	if Input.is_action_pressed("jump"):
 		if jump == 1:
-			velocity.y += -300
+			velocity.y += -150
 			jump = 0
+			$Jump.start()
 	#Les animations
 	if is_on_floor():
 		$AnimatedSprite.animation = "walk"
@@ -29,6 +30,9 @@ func _physics_process(delta):
 	#La gravité
 	if velocity.y < 80:
 		velocity.y += delta * GRAVITY
+	if velocity.y < -100:
+		velocity.y = -100
+	
 	#La compilation de tout dans move_and_slide
 	
 	move_and_slide(velocity, Vector2(0,-1))
