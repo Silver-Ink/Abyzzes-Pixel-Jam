@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/timemap_test.png-e62f0a31fe16d4d3a4f275ebc5080255.stex"
+path="res://.import/murs.png-f73794de171f6b093a652cff768d2c91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://timemap_test.png"
-dest_files=[ "res://.import/timemap_test.png-e62f0a31fe16d4d3a4f275ebc5080255.stex" ]
+source_file="res://images/murs.png"
+dest_files=[ "res://.import/murs.png-f73794de171f6b093a652cff768d2c91.stex" ]
 
 [params]
 
