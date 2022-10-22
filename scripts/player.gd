@@ -21,9 +21,10 @@ func _physics_process(delta):
 	#Les animations
 	if is_on_floor():
 		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = velocity.x < 0
+
 	else:
 		$AnimatedSprite.animation = "swim"
+	if velocity.x != 0:	
 		$AnimatedSprite.flip_h = velocity.x < 0
 	#La gravité
 	if velocity.y < 80:
