@@ -25,9 +25,7 @@ position = Vector2( 454, 398 )
 
 [node name="algue" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 164, 522 )
-frame = 0
 offset = Vector2( 102, -88 )
 
 [node name="algue2" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 94, 426 )
-frame = 0
