@@ -1,4 +1,23 @@
 extends KinematicBody2D
+
+
+
+var speed = 250
+var velocity = Vector2()
+
+func get_input():
+	# Detect up/down/left/right keystate and only move when pressed.
+	velocity = Vector2()
+	if Input.is_action_pressed('move_right'):
+		velocity.x += 1
+	if Input.is_action_pressed('move_left'):
+		velocity.x -= 1
+	velocity = velocity.normalized() * speed
+
+func _physics_process(delta):
+	get_input()
+	move_and_collide(velocity * delta)
+
 signal hit
 
 export var speed = 400 # How fast the player will move (pixels/sec).
@@ -44,4 +63,5 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
 
