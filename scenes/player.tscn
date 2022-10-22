@@ -39,8 +39,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 19.0
-height = 26.0
+radius = 14.9999
+height = 34.0001
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 5 )
@@ -49,11 +49,10 @@ script = ExtResource( 5 )
 scale = Vector2( 0.14, 0.14 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( -1, -7 )
 rotation = 1.5708
 shape = SubResource( 2 )
 

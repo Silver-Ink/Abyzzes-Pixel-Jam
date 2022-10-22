@@ -13,18 +13,20 @@ script = ExtResource( 1 )
 tile_data = PoolIntArray( 131074, 0, 262160, 131075, 0, 327682, 131076, 0, 327682, 131077, 0, 327682, 131078, 0, 327682, 131079, 0, 262161, 196610, 0, 131077, 196615, 0, 131077, 262146, 0, 327693, 262147, 0, 327683, 262149, 0, 327685, 262151, 0, 131077, 327682, 0, 131077, 327687, 0, 131077, 393218, 0, 131077, 393223, 0, 131077, 458752, 0, 327681, 458753, 0, 327682, 458754, 0, 327694, 458755, 0, 327682, 458756, 0, 327682, 458757, 0, 327682, 458758, 0, 327682, 458759, 0, 327694, 458760, 0, 327682, 458761, 0, 327682, 458762, 0, 327682, 458763, 0, 327682, 458764, 0, 327682, 458765, 0, 327683 )
 
 [node name="Player" parent="TileMap" instance=ExtResource( 2 )]
-position = Vector2( 736, -51 )
+position = Vector2( 643, 18 )
+
+[node name="camera" type="Camera2D" parent="TileMap/Player"]
+current = true
 
 [node name="path" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 430, 277 )
 
-[node name="algues" type="Node" parent="."]
+[node name="algues" type="Node" parent="TileMap"]
 
-[node name="algue" parent="algues" instance=ExtResource( 3 )]
+[node name="algue" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 164, 522 )
-frame = 3
+frame = 1
 offset = Vector2( 102, -88 )
 
-[node name="algue2" parent="algues" instance=ExtResource( 3 )]
+[node name="algue2" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 94, 426 )
-frame = 0
