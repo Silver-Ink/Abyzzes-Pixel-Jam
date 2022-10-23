@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/path shark.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/algue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/path.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/checkPoint.tscn" type="PackedScene" id=6]
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,16 +21,19 @@ position = Vector2( 454, 398 )
 
 [node name="algue" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -175, 603 )
-frame = 1
 offset = Vector2( 102, -88 )
 
 [node name="algue2" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -558, 508 )
-frame = 1
 
 [node name="path shark" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 45, -34 )
 scale = Vector2( 1, 1.22222 )
 
+[node name="checkPoint" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 1251, 216 )
+scale = Vector2( 4.53882, 3.5265 )
+
 [node name="path" parent="." instance=ExtResource( 5 )]
 position = Vector2( 371, 94 )
+poisson_type = 1
