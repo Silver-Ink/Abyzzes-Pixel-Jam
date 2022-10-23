@@ -10,7 +10,7 @@ enum poisson{
 var enduranceMAX = 200
 var endurance = enduranceMAX
 var starting_point 
-var gonfle = 0
+var gonfle = false
 const GRAVITY = 3
 
 const WALK_SPEED = 200
@@ -35,7 +35,7 @@ func dash(charge):
 	
 	
 func _physics_process(delta):
-	if gonfle == 0:
+	if gonfle == false:
 		#La gravité
 		if (!is_on_floor()):
 			velocity.y += GRAVITY
@@ -105,7 +105,7 @@ func _physics_process(delta):
 			else:
 				$AnimatedSprite.play("walk")	
 	else:
-		print("true")
+		move_and_slide(Vector2(0, -150), Vector2.UP)
 
 	
 func _on_Jump_timeout():
@@ -124,9 +124,12 @@ func eat(poisson_type):
 		poisson.lanterne:
 			pass
 		poisson.fugus:
-			print("gonflé")
-			gonfle = 1
-			$Gonfle.start()
+			$AnimatedSprite.play("gonfle")
+			gonfle = true
+			$gonfle.start()
 
 func _ready():
 	starting_point = position
+	
+func _on_gonfle_timeout():
+	gonfle = false
