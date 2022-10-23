@@ -90,6 +90,15 @@ func _physics_process(delta):
 			if normal.x > 0:
 				normal.x *= -1
 			velocity *= normal
+			
+			
+	if is_on_floor():
+		if abs( velocity.x) <= 20:
+			$AnimatedSprite.stop()
+			print("pause")
+		else:
+			$AnimatedSprite.play("walk")
+			print("pas pause")		
 	
 func _on_Jump_timeout():
 	jump = 1
