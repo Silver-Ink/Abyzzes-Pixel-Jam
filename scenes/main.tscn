@@ -4,8 +4,6 @@
 [ext_resource path="res://scenes/algue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/path.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/path.gd" type="Script" id=6]
-
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,111 +16,115 @@ tile_data = PoolIntArray( -1310731, 0, 65537, -1310730, 0, 65538, -1310729, 0, 6
 
 [node name="algue" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -175, 603 )
-
+frame = 1
 offset = Vector2( 102, -88 )
 
 [node name="algue2" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -558, 508 )
-
+frame = 1
 
 [node name="algue3" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 629, 905 )
-frame = 1
+frame = 0
 
 [node name="algue4" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 986, 900 )
-frame = 1
+frame = 0
 
 [node name="algue5" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1053, 901 )
+frame = 1
 
 [node name="algue6" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 815, 897 )
+frame = 1
 
 [node name="algue7" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1251, 836 )
-frame = 0
+frame = 3
 
 [node name="algue8" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 613, 711 )
-frame = 3
 
 [node name="algue9" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 745, 704 )
-frame = 3
 
 [node name="algue10" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 684, 898 )
+frame = 1
 
 [node name="algue11" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1578, 588 )
-frame = 1
+frame = 0
 
 [node name="algue12" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 216, 328 )
-frame = 1
+frame = 0
 
 [node name="algue13" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 488, 265 )
-frame = 0
+frame = 3
 
 [node name="algue14" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 178, 132 )
+frame = 1
 
 [node name="algue15" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -606, 265 )
-frame = 0
+frame = 3
 
 [node name="algue16" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1181, 1107 )
+frame = 1
 
 [node name="algue17" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1095, 1089 )
+frame = 1
 
 [node name="algue18" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 1006, 1104 )
-frame = 0
+frame = 3
 
 [node name="algue19" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 921, 1100 )
-frame = 3
 
 [node name="algue20" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 854, 1096 )
+frame = 1
 
 [node name="algue21" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 739, 1102 )
-frame = 3
 
 [node name="algue22" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 589, 1116 )
+frame = 1
 
 [node name="algue23" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( 655, 1102 )
+frame = 1
 
 [node name="algue24" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -493, 1040 )
-frame = 1
+frame = 0
 
 [node name="algue25" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -249, 1035 )
-frame = 1
+frame = 0
 
 [node name="algue26" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -482, 906 )
-frame = 1
+frame = 0
 
 [node name="algue27" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -617, 903 )
-frame = 0
+frame = 3
 
 [node name="algue28" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -360, 782 )
-frame = 3
 
 [node name="algue29" parent="TileMap/algues" instance=ExtResource( 3 )]
 position = Vector2( -179, 658 )
-frame = 0
+frame = 3
 
 [node name="Poissons" type="Node" parent="."]
 
