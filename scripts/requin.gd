@@ -17,5 +17,3 @@ func _ready():
 
 func _on_PlayerDetector_body_entered(body):
 	body.die()
-
-

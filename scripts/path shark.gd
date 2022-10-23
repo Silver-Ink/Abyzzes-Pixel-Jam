@@ -1,9 +1,6 @@
-extends KinematicBody2D
+extends Path2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var follow = get_node("follow")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,10 +9,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func _on_PlayerDetector_body_entered(body):
-	body.die()
-
-
+func _process(delta):
+	follow.set_offset(follow.get_offset() + 150 * delta)

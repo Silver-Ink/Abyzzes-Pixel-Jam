@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var enduranceMAX = 200
 var endurance = enduranceMAX
-
+var starting_point = Vector2()
 const GRAVITY = 30
 const WALK_SPEED = 200
 const JUMP_FORCE = 500
@@ -48,7 +48,6 @@ func _physics_process(delta):
 	#Les animations
 	if is_on_floor():
 		$AnimatedSprite.animation = "walk"
-
 	else:
 		$AnimatedSprite.animation = "swim"
 	if velocity.x != 0:	
@@ -66,3 +65,8 @@ func _physics_process(delta):
 func _on_Jump_timeout():
 	jump = 1
 	
+func die():
+	position = starting_point
+
+func _ready():
+	starting_point = position
