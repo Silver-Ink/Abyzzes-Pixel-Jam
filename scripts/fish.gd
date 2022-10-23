@@ -2,7 +2,8 @@ extends Area2D
 enum poisson{
 	bleu,
 	rouge,
-	lanterne
+	lanterne,
+	fugus
 }
 
 export(poisson) var poisson_type

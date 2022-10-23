@@ -11,7 +11,8 @@ enum itineraire{
 enum poisson{
 	bleu,
 	rouge,
-	lanterne
+	lanterne,
+	fugus
 }
 
 export(itineraire) var forme
