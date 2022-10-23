@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://images/poisson_bleu.png" type="Texture" id=1]
 [ext_resource path="res://scripts/fish.gd" type="Script" id=2]
 [ext_resource path="res://images/poisson_rouge.png" type="Texture" id=3]
 [ext_resource path="res://images/poisson_lanterne.png" type="Texture" id=4]
-[ext_resource path="res://art/poisson_fugus.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
@@ -57,11 +56,6 @@ animations = [ {
 "name": "bleu",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "fugus",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "lanterne",
@@ -83,8 +77,8 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 7 )
-
 animation = "lanterne"
+frame = 1
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_fish_body_entered"]
