@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/endurance.gd" type="Script" id=1]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="endurance" type="ProgressBar" parent="."]
+margin_left = 21.0
+margin_top = 21.0
+margin_right = 333.0
+margin_bottom = 82.0
+step = 0.1
+script = ExtResource( 1 )

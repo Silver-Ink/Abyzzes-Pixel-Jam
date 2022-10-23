@@ -2,11 +2,12 @@ extends KinematicBody2D
 
 var enduranceMAX = 200
 var endurance = enduranceMAX
-
+var starting_point 
 
 const GRAVITY = 3
 
 const WALK_SPEED = 200
+const DASH_CHARGING_SPEED = 5
 const JUMP_FORCE = 180
 const MAX_GRAVITY = 300
 const FRICTION = .90
@@ -54,7 +55,21 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_released("dash"):
 		dash_charging = false
-		dash(2000)
+		dash(dash_charge)
+		dash_charge = 0
+		
+	if dash_charging:
+		if endurance > 0:
+			dash_charge += 10 * DASH_CHARGING_SPEED
+			endurance -= DASH_CHARGING_SPEED
+	else:
+		if is_on_floor():
+			endurance += 3
+		else:
+			endurance += 1
+		if endurance > enduranceMAX:
+			endurance = enduranceMAX
+			
 	#Les animations
 	if is_on_floor():
 		$AnimatedSprite.animation = "walk"

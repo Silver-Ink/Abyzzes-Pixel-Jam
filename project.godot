@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Player="*res://scenes/player.tscn"
+GUI="*res://scenes/GUI.tscn"
 
 [gui]
 
