@@ -28,3 +28,16 @@ func set_type(type):
 	
 func get_eaten():
 	Player.eat(poisson_type)
+	free_poisson()
+	
+
+func free_poisson():
+	if poisson_type == poisson.bleu or\
+	poisson_type == poisson.rouge or\
+	poisson_type == poisson.lanterne:
+		get_parent().get_parent().queue_free()
+		queue_free()
+
+func _on_fish_body_entered(body):
+	if (body == Player):
+		get_eaten()

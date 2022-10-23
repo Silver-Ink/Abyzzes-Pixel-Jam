@@ -82,5 +82,8 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 7 )
-animation = "fugus"
+
+animation = "lanterne"
 playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_fish_body_entered"]
