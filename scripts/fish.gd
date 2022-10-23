@@ -20,7 +20,7 @@ func _flip(mode):
 	$AnimatedSprite.set_flip_h(mode)
 
 func _process(delta):
-	pass
+	set_rotation(cos(Time.get_ticks_msec() / 280.0)/3)
 	
 func set_type(type):
 	poisson_type = type

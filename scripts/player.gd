@@ -7,7 +7,7 @@ enum poisson{
 	fugus
 }
 
-var enduranceMAX = 200
+var enduranceMAX = 150
 var endurance = enduranceMAX
 var starting_point 
 var gonfle = false
@@ -116,17 +116,22 @@ func die():
 	endurance = enduranceMAX
 	
 func eat(poisson_type):
+	$crunch.play()
 	match (poisson_type):
 		poisson.bleu:
-			pass
+			boost(40)
 		poisson.rouge:
-			pass
+			boost(20)
 		poisson.lanterne:
-			pass
+			boost(75)
 		poisson.fugus:
 			$AnimatedSprite.play("gonfle")
 			gonfle = true
 			$gonfle.start()
+			
+func boost(power):
+	enduranceMAX += power
+	endurance = enduranceMAX
 
 func _ready():
 	starting_point = position
