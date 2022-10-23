@@ -3,13 +3,14 @@ extends KinematicBody2D
 enum poisson{
 	bleu,
 	rouge,
-	lanterne
+	lanterne,
+	fugus
 }
 
 var enduranceMAX = 200
 var endurance = enduranceMAX
 var starting_point 
-
+var gonfle = 0
 const GRAVITY = 3
 
 const WALK_SPEED = 200
@@ -34,76 +35,77 @@ func dash(charge):
 	
 	
 func _physics_process(delta):
-	
-	#La gravité
-	if (!is_on_floor()):
-		velocity.y += GRAVITY
-	if (velocity.y > MAX_GRAVITY):
-		velocity.y = MAX_GRAVITY
-	
-	#Les mouvements du joueur
-	if Input.is_action_pressed("move-left"):
-		velocity.x = -WALK_SPEED
-	elif Input.is_action_pressed("move-right"):
-		velocity.x =  WALK_SPEED
-	velocity.x *= FRICTION
-	if velocity.y < 0:
-		velocity.y *= FRICTION
-	
-	if Input.is_action_pressed("jump"):
-		if jump == 1:
-			velocity.y = -JUMP_FORCE
-			jump = 0
-			$Jump.start()
-			
-	if Input.is_action_just_pressed("dash"):
-		dash_charging = true
-	
-	if Input.is_action_just_released("dash"):
-		dash_charging = false
-		dash(dash_charge)
-		dash_charge = 0
+	if gonfle == 0:
+		#La gravité
+		if (!is_on_floor()):
+			velocity.y += GRAVITY
+		if (velocity.y > MAX_GRAVITY):
+			velocity.y = MAX_GRAVITY
 		
-	if dash_charging:
-		if endurance > 0:
-			dash_charge += 10 * DASH_CHARGING_SPEED
-			endurance -= DASH_CHARGING_SPEED
-	else:
+		#Les mouvements du joueur
+		if Input.is_action_pressed("move-left"):
+			velocity.x = -WALK_SPEED
+		elif Input.is_action_pressed("move-right"):
+			velocity.x =  WALK_SPEED
+		velocity.x *= FRICTION
+		if velocity.y < 0:
+			velocity.y *= FRICTION
+		
+		if Input.is_action_pressed("jump"):
+			if jump == 1:
+				velocity.y = -JUMP_FORCE
+				jump = 0
+				$Jump.start()
+				
+		if Input.is_action_just_pressed("dash"):
+			dash_charging = true
+		
+		if Input.is_action_just_released("dash"):
+			dash_charging = false
+			dash(dash_charge)
+			dash_charge = 0
+			
+		if dash_charging:
+			if endurance > 0:
+				dash_charge += 10 * DASH_CHARGING_SPEED
+				endurance -= DASH_CHARGING_SPEED
+		else:
+			if is_on_floor():
+				endurance += 3
+			else:
+				endurance += 1
+			if endurance > enduranceMAX:
+				endurance = enduranceMAX
+				
+		#Les animations
 		if is_on_floor():
-			endurance += 3
+			$AnimatedSprite.animation = "walk"
 		else:
-			endurance += 1
-		if endurance > enduranceMAX:
-			endurance = enduranceMAX
-			
-	#Les animations
-	if is_on_floor():
-		$AnimatedSprite.animation = "walk"
+			$AnimatedSprite.animation = "swim"
+		if velocity.x != 0:	
+			$AnimatedSprite.flip_h = velocity.x < 0
+		
+		
+		#La compilation de tout dans move_and_slide
+		
+		move_and_slide(velocity, Vector2(0,-1))
+		var collision = get_last_slide_collision()
+		if (collision != null):
+			var normal = collision.get_normal()
+			if normal.y != -1:
+				normal.y *= -1
+				if normal.x > 0:
+					normal.x *= -1
+				velocity *= normal
+				
+				
+		if is_on_floor():
+			if abs( velocity.x) <= 20:
+				$AnimatedSprite.stop()
+			else:
+				$AnimatedSprite.play("walk")	
 	else:
-		$AnimatedSprite.animation = "swim"
-	if velocity.x != 0:	
-		$AnimatedSprite.flip_h = velocity.x < 0
-	
-	
-	#La compilation de tout dans move_and_slide
-	
-	move_and_slide(velocity, Vector2(0,-1))
-	var collision = get_last_slide_collision()
-	if (collision != null):
-		var normal = collision.get_normal()
-		if normal.y != -1:
-			normal.y *= -1
-			if normal.x > 0:
-				normal.x *= -1
-			velocity *= normal
-			
-			
-	if is_on_floor():
-		if abs( velocity.x) <= 20:
-			$AnimatedSprite.stop()
-		else:
-			$AnimatedSprite.play("walk")	
-			
+		print("true")
 
 	
 func _on_Jump_timeout():
@@ -121,13 +123,10 @@ func eat(poisson_type):
 			pass
 		poisson.lanterne:
 			pass
+		poisson.fugus:
+			print("gonflé")
+			gonfle = 1
+			$Gonfle.start()
 
 func _ready():
 	starting_point = position
-
-func gonfle():
-	velocity.y += 100
-	$Gonfle.start()
-
-func _on_Gonfle_timeout():
-	velocity.y += -100
