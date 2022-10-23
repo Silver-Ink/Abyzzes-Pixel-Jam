@@ -109,3 +109,10 @@ func die():
 
 func _ready():
 	starting_point = position
+
+func gonfle():
+	velocity.y += 100
+	$Gonfle.start()
+
+func _on_Gonfle_timeout():
+	velocity.y += -100
