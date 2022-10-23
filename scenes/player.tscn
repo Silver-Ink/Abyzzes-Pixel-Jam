@@ -47,8 +47,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 14.9999
-height = 34.0001
+radius = 19.0
+height = 26.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 5 )
