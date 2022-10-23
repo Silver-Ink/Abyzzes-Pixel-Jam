@@ -20,3 +20,5 @@ rotation = -0.0334565
 script = ExtResource( 3 )
 
 [node name="fish" parent="follow" instance=ExtResource( 2 )]
+
+[connection signal="area_entered" from="follow/fish" to="." method="_on_fish_area_entered"]

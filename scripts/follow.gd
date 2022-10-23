@@ -1,20 +1,16 @@
 extends PathFollow2D
 
-signal switch_rotation
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var flipped = false
-
-onready var fish = get_node("fish")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init()
 	
 func init():
-	connect("switch_rotation", fish, "_flip", [flipped])
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

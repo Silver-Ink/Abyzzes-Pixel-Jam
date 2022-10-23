@@ -1,10 +1,29 @@
 extends KinematicBody2D
 
-const GRAVITY = 80.0
+var enduranceMAX = 200
+var endurance = enduranceMAX
+
+const GRAVITY = 30
 const WALK_SPEED = 200
+const JUMP_FORCE = 500
+const MAX_GRAVITY = 100
+const FRICTION = .90
 var jump = 1
 var velocity = Vector2()
+var gravity = Vector2()
+var dash_charge = 0
+var dash_charging = false
 
+func _poisson_collision(area):
+	print("ok")
+	
+func dash(charge):
+	var mousePos = get_global_mouse_position()
+	var angle = atan2(mousePos.y - position.y, mousePos.x - position.x) 
+	var dash = Vector2(cos(angle), sin(angle)) * charge
+	velocity += dash
+	
+	
 func _physics_process(delta):
 	
 	#Les mouvements du joueur
@@ -12,13 +31,20 @@ func _physics_process(delta):
 		velocity.x = -WALK_SPEED
 	elif Input.is_action_pressed("move-right"):
 		velocity.x =  WALK_SPEED
-	else:
-		velocity.x = 0
+	velocity.x *= FRICTION
+	
 	if Input.is_action_pressed("jump"):
 		if jump == 1:
-			velocity.y += -150
+			velocity.y += -JUMP_FORCE
 			jump = 0
 			$Jump.start()
+			
+	if Input.is_action_just_pressed("dash"):
+		dash_charging = true
+	
+	if Input.is_action_just_released("dash"):
+		dash_charging = false
+		dash(1000)
 	#Les animations
 	if is_on_floor():
 		$AnimatedSprite.animation = "walk"
@@ -28,10 +54,10 @@ func _physics_process(delta):
 	if velocity.x != 0:	
 		$AnimatedSprite.flip_h = velocity.x < 0
 	#La gravité
-	if velocity.y < 80:
-		velocity.y += delta * GRAVITY
-	if velocity.y < -100:
-		velocity.y = -100
+	if (!is_on_floor()):
+		velocity.y += GRAVITY
+	if (velocity.y > MAX_GRAVITY):
+		velocity.y = MAX_GRAVITY
 	
 	#La compilation de tout dans move_and_slide
 	
@@ -39,5 +65,4 @@ func _physics_process(delta):
 	
 func _on_Jump_timeout():
 	jump = 1
-	
 	
