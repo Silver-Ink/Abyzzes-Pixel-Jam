@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+enum poisson{
+	bleu,
+	rouge,
+	lanterne
+}
+
 var enduranceMAX = 200
 var endurance = enduranceMAX
 var starting_point 
@@ -106,6 +112,15 @@ func _on_Jump_timeout():
 func die():
 	position = starting_point
 	endurance = enduranceMAX
+	
+func eat(poisson_type):
+	match (poisson_type):
+		poisson.bleu:
+			pass
+		poisson.rouge:
+			pass
+		poisson.lanterne:
+			pass
 
 func _ready():
 	starting_point = position
